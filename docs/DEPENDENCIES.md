@@ -21,11 +21,31 @@ $ node -v > .nvmrc
 
 ## shadcn
 
+[Install and configure Next.js](https://ui.shadcn.com/docs/installation/next)
+
 ```shell
 npx shadcn@latest init -d
 ```
 
-[Install and configure Next.js](https://ui.shadcn.com/docs/installation/next)
+## tailwindcss
+
+Install Tailwind CSS
+
+```shell
+npm install tailwindcss @tailwindcss/postcss postcss
+```
+
+Add Tailwind to your PostCSS configuration
+
+```javascript
+export default {
+  plugins: {
+    "@tailwindcss/postcss": {},
+  }
+}
+```
+
+[Get started with Tailwind CSS](https://tailwindcss.com/docs/installation/using-postcss)
 
 ## Supabase Auth
 
@@ -35,10 +55,29 @@ npm install @supabase/supabase-js @supabase/ssr
 
 ## prisma
 
+Install Prisma ORM
+
+```shell
+npm install prisma --save-dev
+npm install tsx --save-dev
+# If you're not using a Prisma Postgres database, you won't need the @prisma/extension-accelerate package.
+npm install @prisma/extension-accelerate
+```
+
+Then, run prisma init to initialize Prisma ORM in your project.
+
 ```shell
 npx prisma init
 npx prisma migrate dev --name init
 ```
+
+Seed your database
+
+```shell
+npx prisma db seed
+```
+
+Set up Prisma Client
 
 ```shell
 npm install @prisma/client
