@@ -20,3 +20,11 @@ node -v > .nvmrc
 ```
 
 [How to set up a new Next.js project](https://nextjs.org/docs/app/getting-started/installation)
+
+## shadcn
+
+```shell
+npx shadcn@latest init -d
+```
+
+[Install and configure Next.js](https://ui.shadcn.com/docs/installation/next)
