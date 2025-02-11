@@ -13,7 +13,6 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { absoluteUrl } from '@/utils'
 
-
 type RegisterFormValues = z.infer<typeof registerFormSchema>
 
 // This can come from your database or API.
@@ -24,33 +23,33 @@ const defaultValues: RegisterFormValues = {
 }
 
 export function RegisterForm() {
-    const router = useRouter()
-    const form = useForm<RegisterFormValues>({
-        resolver: zodResolver(registerFormSchema),
-        defaultValues,
-      })
-      const {
-        control,
-        handleSubmit,
-        setError,
-        formState: { errors },
-      } = form
+  const router = useRouter()
+  const form = useForm<RegisterFormValues>({
+    resolver: zodResolver(registerFormSchema),
+    defaultValues,
+  })
+  const {
+    control,
+    handleSubmit,
+    setError,
+    formState: { errors },
+  } = form
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false)
 
   async function onSubmit(values: RegisterFormValues) {
     try {
       setIsSubmitting(true)
-      
+
       const res = await fetch(absoluteUrl('/api/auth/register'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(values)
+        body: JSON.stringify(values),
       })
       const data = await res.json()
-      
+
       if (!res.ok) throw new Error(res.statusText)
       if (!data.success) throw new Error(data.message)
-      
+
       router.refresh()
       router.replace('/dashboard')
     } catch (e: unknown) {
@@ -61,8 +60,8 @@ export function RegisterForm() {
     }
   }
 
-    return (
-      <Form {...form}>
+  return (
+    <Form {...form}>
       <form noValidate onSubmit={handleSubmit(onSubmit)}>
         <div className="flex flex-col gap-6">
           <FormField
@@ -132,5 +131,5 @@ export function RegisterForm() {
         </div>
       </form>
     </Form>
-    )
+  )
 }

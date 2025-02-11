@@ -6,17 +6,22 @@ import Link from 'next/link'
 import { Command, MessageCircleQuestion, SquareTerminal } from 'lucide-react'
 import { NavMain } from '@/components/nav-main'
 import { NavSecondary } from '@/components/nav-secondary'
-import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem, SidebarRail } from '@/components/ui/sidebar'
+import {
+  Sidebar,
+  SidebarContent,
+  SidebarFooter,
+  SidebarHeader,
+  SidebarMenu,
+  SidebarMenuButton,
+  SidebarMenuItem,
+  SidebarRail,
+} from '@/components/ui/sidebar'
 import { SidebarOptInForm } from '@/components/sidebar-opt-in-form'
 
 // This is sample data.
 const data = {
-  navMain: [
-    { title: 'Dashboard', url: '/dashboard', icon: SquareTerminal, open: true, items: [] },
-  ],
-  navSecondary: [
-    { title: 'FAQ', url: '#', icon: MessageCircleQuestion },
-  ]
+  navMain: [{ title: 'Dashboard', url: '/dashboard', icon: SquareTerminal, open: true, items: [] }],
+  navSecondary: [{ title: 'FAQ', url: '#', icon: MessageCircleQuestion }],
 }
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {

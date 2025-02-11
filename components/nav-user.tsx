@@ -63,12 +63,14 @@ export function NavUser() {
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
-        <DropdownMenuItem onClick={async () => {
-          const supabase = createClient()
-          await supabase.auth.signOut()
-          router.refresh()
-          router.push('/auth/login')
-        }}>
+        <DropdownMenuItem
+          onClick={async () => {
+            const supabase = createClient()
+            await supabase.auth.signOut()
+            router.refresh()
+            router.replace('/auth/login')
+          }}
+        >
           <LogOut />
           Log out
         </DropdownMenuItem>

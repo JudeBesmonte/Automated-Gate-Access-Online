@@ -10,7 +10,7 @@ declare global {
 
       DATABASE_URL: string
       DIRECT_URL: string
-      
+
       [key: string]: string | undefined
     }
   }
