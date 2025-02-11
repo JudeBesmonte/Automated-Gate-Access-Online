@@ -45,3 +45,19 @@ npm install @prisma/client
 ```
 
 [ORM Quickstarts Prisma](https://supabase.com/docs/guides/database/prisma)
+
+## Zustand
+
+Bear necessities for state management in React
+
+```shell
+npm i zustand
+```
+
+## React Query
+
+Powerful asynchronous state management, server-state utilities and data fetching for the web. TS/JS, React Query, Solid Query, Svelte Query and Vue Query.
+
+```shell
+npm i @tanstack/react-query
+```
