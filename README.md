@@ -40,3 +40,7 @@ The folder and file structure is based on nextjs app router [next.js project str
 ├── utils/                      # Utility functions
 └── package.json
 ```
+
+## License
+
+This software license under the [MIT License](LICENSE).
