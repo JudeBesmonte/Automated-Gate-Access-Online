@@ -1,8 +1,6 @@
 'use client'
 
 import * as React from 'react'
-import { useRouter } from 'next/navigation'
-import { createClient } from '@/utils/supabase/client'
 
 import { BadgeCheck, Bell, CreditCard, LogOut, Sparkles } from 'lucide-react'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
@@ -15,6 +13,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
+import { signOut } from '@/hooks/use-auth'
 
 // This is sample data.
 const user = {
@@ -24,8 +23,6 @@ const user = {
 }
 
 export function NavUser() {
-  const router = useRouter()
-
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -63,14 +60,7 @@ export function NavUser() {
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
-        <DropdownMenuItem
-          onClick={async () => {
-            const supabase = createClient()
-            await supabase.auth.signOut()
-            router.refresh()
-            router.replace('/auth/login')
-          }}
-        >
+        <DropdownMenuItem onClick={() => signOut()}>
           <LogOut />
           Log out
         </DropdownMenuItem>

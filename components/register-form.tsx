@@ -12,6 +12,7 @@ import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, For
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { absoluteUrl } from '@/utils'
+import { type RegisterAPI } from '@/types/api'
 
 type RegisterFormValues = z.infer<typeof registerFormSchema>
 
@@ -45,10 +46,10 @@ export function RegisterForm() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(values),
       })
-      const data = await res.json()
+      const result: RegisterAPI = await res.json()
 
       if (!res.ok) throw new Error(res.statusText)
-      if (!data.success) throw new Error(data.message)
+      if (!result.success) throw new Error(result.message)
 
       router.refresh()
       router.replace('/dashboard')

@@ -13,6 +13,7 @@ import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, For
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { absoluteUrl } from '@/utils'
+import { type LoginAPI } from '@/types/api'
 
 type LoginFormValues = z.infer<typeof loginFormSchema>
 
@@ -45,10 +46,10 @@ export function LoginForm() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(values),
       })
-      const data = await res.json()
+      const result: LoginAPI = await res.json()
 
       if (!res.ok) throw new Error(res.statusText)
-      if (!data.success) throw new Error(data.message)
+      if (!result.success) throw new Error(result.message)
 
       router.refresh()
       router.replace('/dashboard')
