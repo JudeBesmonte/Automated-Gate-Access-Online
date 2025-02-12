@@ -8,6 +8,7 @@ import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { registerFormSchema } from '@/schemas/auth'
 
+import { toast } from 'sonner'
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -49,13 +50,13 @@ export function RegisterForm() {
       const result: RegisterAPI = await res.json()
 
       if (!res.ok) throw new Error(res.statusText)
-      if (!result.success) throw new Error(result.message)
 
       router.refresh()
       router.replace('/dashboard')
     } catch (e: unknown) {
       const message = (e as Error)?.message
-      setError('root', { message })
+      if (message.includes('User already registered')) setError('root', { message })
+      else toast.error(message)
     } finally {
       setIsSubmitting(false)
     }

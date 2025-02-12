@@ -15,8 +15,8 @@ export async function POST(req: NextRequest) {
   const signed = await supabase.auth.signUp({ email: form.data.email, password: form.data.newPassword })
 
   if (signed.error) {
-    return ApiResponse.json({ user: null, message: signed.error.message })
+    return ApiResponse.json({ user: null }, { status: STATUS_CODES.BAD_REQUEST, statusText: signed.error.message })
   }
 
-  return ApiResponse.json({ user: signed.data.user })
+  return ApiResponse.json({ user: signed.data.user, message: 'You have registered successfully' })
 }
