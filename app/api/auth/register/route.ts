@@ -1,7 +1,7 @@
 import { NextResponse, type NextRequest } from 'next/server'
 import { createClient } from '@/utils/supabase/server'
-import { registerFormSchema } from '@/schemas/auth'
 import { ApiResponse, STATUS_CODES } from '@/utils/http'
+import { registerFormSchema } from '@/schemas/auth'
 
 export async function POST(req: NextRequest) {
   const body = await req.json()
@@ -12,11 +12,11 @@ export async function POST(req: NextRequest) {
   }
 
   const supabase = await createClient()
-  const signed = await supabase.auth.signUp({ email: form.data.email, password: form.data.newPassword })
+  const result = await supabase.auth.signUp({ email: form.data.email, password: form.data.newPassword })
 
-  if (signed.error) {
-    return ApiResponse.json({ user: null }, { status: STATUS_CODES.BAD_REQUEST, statusText: signed.error.message })
+  if (result.error) {
+    return ApiResponse.json({ user: null }, { status: STATUS_CODES.BAD_REQUEST, statusText: result.error.message })
   }
 
-  return ApiResponse.json({ user: signed.data.user, message: 'You have registered successfully' })
+  return ApiResponse.json({ user: result.data.user, message: 'You have registered successfully' })
 }

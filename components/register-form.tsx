@@ -51,6 +51,8 @@ export function RegisterForm() {
 
       if (!res.ok) throw new Error(res.statusText)
 
+      toast.success(result.message)
+
       router.refresh()
       router.replace('/dashboard')
     } catch (e: unknown) {

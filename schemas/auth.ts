@@ -15,3 +15,16 @@ export const loginFormSchema = z.object({
   email: z.string().max(255).email(),
   password: z.string().min(6).max(72),
 })
+
+export const forgotPasswordFormSchema = z.object({
+  email: z.string().max(255).email(),
+})
+
+export const newPasswordFormSchema = z
+  .object({
+    newPassword: z.string().min(6).max(72),
+    confirmNewPassword: z.string().min(6).max(72),
+  })
+  .refine((val) => val.newPassword === val.confirmNewPassword, {
+    path: ['confirmNewPassword'],
+  })

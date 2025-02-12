@@ -7,7 +7,12 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "clean:files": "rm -rf node_modules && rm -rf .next && rm package-lock.json",
+    "clean:cache": "npm cache clean --force && npm cache verify",
+    "clean": "npm run clean:files && npm run clean:cache",
+    "upgrade:latest": "npm run clean && npx npm-check-updates -u && npm install",
+    "reinstall": "npm run clean && npm install"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"

@@ -14,35 +14,31 @@ export default async function RegisterPage() {
   if (user) redirect('/dashboard')
 
   return (
-    <div className="flex min-h-svh w-full items-center justify-center p-6 md:p-10">
-      <div className="w-full max-w-sm">
-        <Card>
-          <CardHeader>
-            <CardTitle className="text-2xl">Create an account</CardTitle>
-            <CardDescription>Enter your email below to create your account</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <RegisterForm />
-            <div className="mt-4 text-sm text-muted-foreground">
-              By clicking sign up, you agree to our{' '}
-              <Link href="#" className="text-black underline underline-offset-4">
-                Terms of Service
-              </Link>
-              {' and '}
-              <Link href="#" className="text-black underline underline-offset-4">
-                Privacy Policy
-              </Link>
-              .
-            </div>
-            <div className="mt-4 text-center text-sm">
-              Already have an account?{' '}
-              <Link href="/auth/login" className="underline underline-offset-4">
-                Sign in
-              </Link>
-            </div>
-          </CardContent>
-        </Card>
-      </div>
-    </div>
+    <Card>
+      <CardHeader>
+        <CardTitle className="text-2xl">Create an account</CardTitle>
+        <CardDescription>Enter your email below to create your account</CardDescription>
+      </CardHeader>
+      <CardContent>
+        <RegisterForm />
+        <div className="mt-4 text-sm text-muted-foreground">
+          By clicking sign up, you agree to our{' '}
+          <Link href="#" className="text-black underline underline-offset-4">
+            Terms of Service
+          </Link>
+          {' and '}
+          <Link href="#" className="text-black underline underline-offset-4">
+            Privacy Policy
+          </Link>
+          .
+        </div>
+        <div className="mt-4 text-center text-sm">
+          Already have an account?{' '}
+          <Link href="/auth/login" className="underline underline-offset-4">
+            Sign in
+          </Link>
+        </div>
+      </CardContent>
+    </Card>
   )
 }

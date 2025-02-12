@@ -14,3 +14,11 @@ export interface LoginAPI extends API {
 export interface RegisterAPI extends API {
   data: { user: User | null }
 }
+
+export interface ForgotPasswordAPI extends API {
+  data: null
+}
+
+export interface NewPasswordAPI extends API {
+  data: null
+}
