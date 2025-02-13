@@ -14,7 +14,6 @@ import { Input } from '@/components/ui/input'
 
 import type { ForgotPasswordAPI } from '@/types/api'
 import { absoluteUrl } from '@/lib/utils'
-import { createClient } from '@/lib/supabase/client'
 
 type ForgotPasswordFormValues = z.infer<typeof forgotPasswordFormSchema>
 
@@ -48,6 +47,7 @@ export function ForgotPasswordForm() {
       const result: ForgotPasswordAPI = await res.json()
 
       if (!res.ok) throw new Error(res.statusText)
+      if (!result.success) throw new Error(result.message)
 
       toast.success(result.message)
     } catch (e: unknown) {

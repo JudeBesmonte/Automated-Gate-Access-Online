@@ -50,6 +50,7 @@ export function LoginForm() {
       const result: LoginAPI = await res.json()
 
       if (!res.ok) throw new Error(res.statusText)
+      if (!result.success) throw new Error(result.message)
 
       toast.success(result.message)
 

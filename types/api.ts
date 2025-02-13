@@ -1,11 +1,5 @@
 import type { User } from '@prisma/client'
-
-export interface API {
-  status: string
-  message: string
-  success: boolean
-  data: any
-}
+import type { API } from '@/lib/http'
 
 export interface LoginAPI extends API {
   data: { user: User | null }
@@ -20,5 +14,5 @@ export interface ForgotPasswordAPI extends API {
 }
 
 export interface NewPasswordAPI extends API {
-  data: null
+  data: { user: User | null }
 }

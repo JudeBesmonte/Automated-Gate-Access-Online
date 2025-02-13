@@ -14,6 +14,7 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { absoluteUrl } from '@/lib/utils'
 import { type RegisterAPI } from '@/types/api'
+import { createClient } from '@/lib/supabase/client'
 
 type RegisterFormValues = z.infer<typeof registerFormSchema>
 
@@ -50,6 +51,7 @@ export function RegisterForm() {
       const result: RegisterAPI = await res.json()
 
       if (!res.ok) throw new Error(res.statusText)
+      if (!result.success) throw new Error(result.message)
 
       toast.success(result.message)
 

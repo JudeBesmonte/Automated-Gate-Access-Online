@@ -1,7 +1,7 @@
 'use client'
 
 import * as React from 'react'
-import { useRouter, useSearchParams } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
@@ -26,7 +26,6 @@ const defaultValues: NewPasswordFormValues = {
 
 export function NewPasswordForm() {
   const router = useRouter()
-  const searchParams = useSearchParams()
 
   const form = useForm<NewPasswordFormValues>({
     resolver: zodResolver(newPasswordFormSchema),
@@ -52,10 +51,11 @@ export function NewPasswordForm() {
       const result: NewPasswordAPI = await res.json()
 
       if (!res.ok) throw new Error(res.statusText)
+      if (!result.success) throw new Error(result.message)
 
       toast.success(result.message)
 
-      router.replace('/auth/login')
+      router.replace('/dashboard')
     } catch (e: unknown) {
       toast.error((e as Error)?.message)
     } finally {

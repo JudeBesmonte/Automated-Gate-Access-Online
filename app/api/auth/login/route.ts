@@ -1,9 +1,9 @@
 import { NextResponse, type NextRequest } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
-import { ApiResponse, STATUS_CODES } from '@/lib/http'
 
 import { z } from 'zod'
 import { loginFormSchema } from '@/schemas/auth'
+import { ApiResponse, STATUS_CODES } from '@/lib/http'
 
 type LoginFormValues = z.infer<typeof loginFormSchema>
 
@@ -16,11 +16,14 @@ export async function POST(req: NextRequest) {
   }
 
   const supabase = await createClient()
-  const result = await supabase.auth.signInWithPassword(form.data)
+  const {
+    data: { user },
+    error,
+  } = await supabase.auth.signInWithPassword({ email: form.data.email, password: form.data.password })
 
-  if (result.error) {
-    return ApiResponse.json({ user: null }, { status: STATUS_CODES.BAD_REQUEST, statusText: result.error.message })
+  if (error || !user) {
+    return ApiResponse.json({ user: null }, { status: error?.status, statusText: error?.message })
   }
 
-  return ApiResponse.json({ user: result.data.user, message: 'You have successfully logged in' })
+  return ApiResponse.json({ user, message: 'You have successfully logged in' })
 }

@@ -1,9 +1,9 @@
 import { NextResponse, type NextRequest } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
-import { ApiResponse, STATUS_CODES } from '@/lib/http'
 
 import { z } from 'zod'
 import { forgotPasswordFormSchema } from '@/schemas/auth'
+import { ApiResponse, STATUS_CODES } from '@/lib/http'
 
 type ForgotPasswordFormValues = z.infer<typeof forgotPasswordFormSchema>
 
@@ -22,7 +22,7 @@ export async function POST(req: NextRequest) {
   // - <p><a href="{{ .ConfirmationURL }}">Reset Password</a></p>
 
   // const supabase = await createClient()
-  // const result = await supabase.auth.resetPasswordForEmail(form.data.email, {
+  // const { error } = await supabase.auth.resetPasswordForEmail(form.data.email, {
   //   redirectTo: absoluteUrl('/auth/new-password'),
   // })
 
@@ -31,10 +31,10 @@ export async function POST(req: NextRequest) {
   // - <p><a href="{{ .SiteURL }}/api/auth/confirm?token_hash={{ .TokenHash }}&type=recovery&next=/auth/new-password">Reset Password</a></p>
 
   const supabase = await createClient()
-  const result = await supabase.auth.resetPasswordForEmail(form.data.email)
+  const { error } = await supabase.auth.resetPasswordForEmail(form.data.email)
 
-  if (result.error) {
-    return ApiResponse.json(null, { status: STATUS_CODES.BAD_REQUEST, statusText: result.error.message })
+  if (error) {
+    return ApiResponse.json({ user: null }, { status: error?.status, statusText: error?.message })
   }
 
   return ApiResponse.json({ message: 'An email has been sent to reset your password.' })
