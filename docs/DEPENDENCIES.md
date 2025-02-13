@@ -47,10 +47,31 @@ export default {
 
 [Get started with Tailwind CSS](https://tailwindcss.com/docs/installation/using-postcss)
 
-## Supabase Auth
+## Supabase
+
+Supabase Auth
 
 ```shell
 npm install @supabase/supabase-js @supabase/ssr
+```
+
+Local Development & CLI
+
+```shell
+$ npm install supabase --save-dev
+$ npx supabase login
+
+$ npx supabase init
+$ npx supabase link --project-ref YOUR_PROJECT_ID
+
+$ vim package.json
+{
+  "scripts": {
+    "gen-types": "supabase gen types --lang=typescript --linked > types/supabase.ts"
+  }
+}
+
+$ npm run gen-types
 ```
 
 ## prisma

@@ -36,6 +36,7 @@ The folder and file structure is based on nextjs app router [next.js project str
 ├── schemas/                    # Schema validations
 ├── screenshots/                # Screenshots
 ├── store/                      # State
+├── supabase/                   # Supabase CLI
 ├── types/                      # Type definitions
 ├── utils/                      # Utility functions
 └── package.json
