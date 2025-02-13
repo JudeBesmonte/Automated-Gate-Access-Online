@@ -1,7 +1,11 @@
 import { NextResponse, type NextRequest } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
 import { ApiResponse, STATUS_CODES } from '@/lib/http'
+
+import { z } from 'zod'
 import { loginFormSchema } from '@/schemas/auth'
+
+type LoginFormValues = z.infer<typeof loginFormSchema>
 
 export async function POST(req: NextRequest) {
   const body = await req.json()

@@ -1,8 +1,11 @@
 import { NextResponse, type NextRequest } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
 import { ApiResponse, STATUS_CODES } from '@/lib/http'
+
+import { z } from 'zod'
 import { newPasswordFormSchema } from '@/schemas/auth'
-import { absoluteUrl } from '@/lib/utils'
+
+type NewPasswordFormValues = z.infer<typeof newPasswordFormSchema>
 
 export async function POST(req: NextRequest) {
   const body = await req.json()

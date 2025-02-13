@@ -1,14 +1,14 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import * as React from 'react'
 import { createClient } from '@/lib/supabase/client'
 import { User } from '@supabase/supabase-js'
 
 export function useAuth() {
   const supabase = createClient()
-  const [user, setUser] = useState<User | null>(null)
+  const [user, setUser] = React.useState<User | null>(null)
 
-  useEffect(() => {
+  React.useEffect(() => {
     supabase.auth.getUser().then(({ data }) => {
       setUser(data.user)
     })

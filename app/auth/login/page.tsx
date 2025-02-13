@@ -4,6 +4,7 @@ import { createClient } from '@/lib/supabase/server'
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { LoginForm } from '@/components/login-form'
+import { LoginWithGoogle } from '@/components/login-with-google'
 
 export default async function LoginPage() {
   const supabase = await createClient()
@@ -21,6 +22,7 @@ export default async function LoginPage() {
       </CardHeader>
       <CardContent>
         <LoginForm />
+        <LoginWithGoogle type="button" variant="outline" className="mt-4 w-full" />
         <div className="mt-4 text-center text-sm">
           Don&apos;t have an account?{' '}
           <Link href="/auth/register" className="underline underline-offset-4">
