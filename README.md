@@ -1,6 +1,10 @@
-# nextjs14-supabasejs2-dashboard-v2
+# nextjs14-supabase-dashboard
 
 This is a dashboard starter template for the [NextJS](https://nextjs.org) 14 based on [Supabase](https://supabase.com).
+
+## Screenshots
+
+![screenshot](./screenshot.png)
 
 ## Denpendencies
 
