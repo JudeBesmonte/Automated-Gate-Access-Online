@@ -135,3 +135,11 @@ To format a file in-place.
 npx prettier --check "./app/**/*.{ts,tsx}"
 npx prettier --write "./{app,components,config,context,hooks,lib,schemas,store,types,utils}/**/*.{ts,tsx}"
 ```
+
+## Troubleshooting
+
+ESLint: Plugin "react-hooks" was conflicted between ".eslintrc.js" and ".eslintrc.js » eslint-config-next » plugin:react-hooks/recommended".
+
+```shell
+npm --save-dev install eslint-plugin-react-hooks@4
+```
