@@ -55,7 +55,6 @@
         "typescriptreact",
         "html",
         "vue",
-        "markdown"
     ],
 
     // Enable/disable default JavaScript formatter.
