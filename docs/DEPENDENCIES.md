@@ -143,3 +143,10 @@ ESLint: Plugin "react-hooks" was conflicted between ".eslintrc.js" and ".eslintr
 ```shell
 npm --save-dev install eslint-plugin-react-hooks@4
 ```
+
+[DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+
+```shell
+nvm use v20.18.3
+node -v > .nvmrc
+```
