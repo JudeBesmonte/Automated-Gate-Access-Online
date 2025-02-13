@@ -7,7 +7,7 @@ This is a dashboard starter template for the [NextJS](https://nextjs.org) 14 bas
 - Next.js 14
 - Tailwindcss
 - Shadcn
-- Supabase Auth
+- Supabase Auth + Supabase CLI
 - Prisma
 - Zustand
 - React Query
@@ -28,7 +28,7 @@ The folder and file structure is based on nextjs app router [next.js project str
 ├── context/                    # Context
 ├── docs/                       # Documents
 ├── hooks/                      # Hooks
-├── lib/                        # Application specific libraries
+├── lib/                        # Application specific libraries & Utility functions
 ├── prisma/                     # Prisma Schema Location and Configuration
 ├── public/                     # Static assets to be served
 │   └── [locales]/              # Internationalization
@@ -38,8 +38,39 @@ The folder and file structure is based on nextjs app router [next.js project str
 ├── store/                      # State
 ├── supabase/                   # Supabase CLI
 ├── types/                      # Type definitions
-├── utils/                      # Utility functions
 └── package.json
+```
+
+## Getting Started
+
+Clone the repository to the current directory.
+
+```shell
+git clone https://github.com/w3labkr/nextjs14-supabase-dashboard.git .
+```
+
+Install all modules listed as dependencies.
+
+```shell
+npm install
+```
+
+Copy of the `.env.example` if the `.env` doesn't exist.
+
+```shell
+cp .env.example .env
+```
+
+Create an SQL migration file and execute it.
+
+```shell
+npx prisma migrate dev --name init
+```
+
+Start the development server.
+
+```shell
+npm run dev
 ```
 
 ## License

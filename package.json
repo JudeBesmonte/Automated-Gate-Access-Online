@@ -1,5 +1,5 @@
 {
-  "name": "nextjs14-supabasejs2-dashboard-v2",
+  "name": "nextjs14-supabase-dashboard",
   "description": "This is a dashboard starter template for the NextJS 14 based on Supabase.",
   "version": "0.1.0",
   "private": true,
