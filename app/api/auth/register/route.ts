@@ -1,9 +1,9 @@
 import { NextResponse, type NextRequest } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
-import { ApiResponse, STATUS_CODES } from '@/lib/http'
 
 import { z } from 'zod'
 import { registerFormSchema } from '@/schemas/auth'
+import { ApiResponse, STATUS_CODES } from '@/lib/http'
 
 type RegisterFormValues = z.infer<typeof registerFormSchema>
 
@@ -15,20 +15,22 @@ export async function POST(req: NextRequest) {
     return ApiResponse.json({ user: null }, { status: STATUS_CODES.BAD_REQUEST })
   }
 
-  // ...
-
-  return await signUpWithCredentials(form.data)
-}
-
-async function signUpWithCredentials(credentials: RegisterFormValues) {
+  // Email authentication is enabled by default.
+  //
+  // You can configure whether users need to verify their email to sign in.
+  // On hosted Supabase projects, this is true by default.
+  // On self-hosted projects or in local development, this is false by default.
+  //
+  // Change this setting on the Auth Providers page for hosted projects,
+  // or in the configuration file for self-hosted projects.
   const supabase = await createClient()
   const {
     data: { user },
     error,
-  } = await supabase.auth.signUp({ email: credentials.email, password: credentials.newPassword })
+  } = await supabase.auth.signUp({ email: form.data.email, password: form.data.newPassword })
 
-  if (error) {
-    return ApiResponse.json({ user: null }, { status: STATUS_CODES.BAD_REQUEST, statusText: error.message })
+  if (error || !user) {
+    return ApiResponse.json({ user: null }, { status: error?.status, statusText: error?.message })
   }
 
   return ApiResponse.json({ user, message: 'You have registered successfully' })
