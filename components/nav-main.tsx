@@ -17,7 +17,7 @@ import {
   SidebarMenuSubItem,
 } from '@/components/ui/sidebar'
 
-import { cn } from '@/utils'
+import { cn } from '@/lib/utils'
 
 export function NavMain({
   items,

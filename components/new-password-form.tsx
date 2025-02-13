@@ -14,7 +14,7 @@ import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, For
 import { Input } from '@/components/ui/input'
 
 import type { NewPasswordAPI } from '@/types/api'
-import { absoluteUrl } from '@/utils'
+import { absoluteUrl } from '@/lib/utils'
 
 type NewPasswordFormValues = z.infer<typeof newPasswordFormSchema>
 

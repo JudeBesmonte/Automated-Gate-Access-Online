@@ -13,8 +13,8 @@ import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, For
 import { Input } from '@/components/ui/input'
 
 import type { ForgotPasswordAPI } from '@/types/api'
-import { absoluteUrl } from '@/utils'
-import { createClient } from '@/utils/supabase/client'
+import { absoluteUrl } from '@/lib/utils'
+import { createClient } from '@/lib/supabase/client'
 
 type ForgotPasswordFormValues = z.infer<typeof forgotPasswordFormSchema>
 

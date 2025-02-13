@@ -13,7 +13,7 @@ import { toast } from 'sonner'
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-import { absoluteUrl } from '@/utils'
+import { absoluteUrl } from '@/lib/utils'
 import { type LoginAPI } from '@/types/api'
 
 type LoginFormValues = z.infer<typeof loginFormSchema>

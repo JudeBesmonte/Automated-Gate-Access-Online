@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { redirect } from 'next/navigation'
 import Link from 'next/link'
-import { createClient } from '@/utils/supabase/server'
+import { createClient } from '@/lib/supabase/server'
 
 import { ArrowLeft } from 'lucide-react'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'

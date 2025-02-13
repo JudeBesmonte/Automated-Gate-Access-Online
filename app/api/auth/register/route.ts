@@ -1,6 +1,6 @@
 import { NextResponse, type NextRequest } from 'next/server'
-import { createClient } from '@/utils/supabase/server'
-import { ApiResponse, STATUS_CODES } from '@/utils/http'
+import { createClient } from '@/lib/supabase/server'
+import { ApiResponse, STATUS_CODES } from '@/lib/http'
 import { registerFormSchema } from '@/schemas/auth'
 
 export async function POST(req: NextRequest) {

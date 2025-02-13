@@ -1,8 +1,8 @@
 import { NextResponse, type NextRequest } from 'next/server'
-import { createClient } from '@/utils/supabase/server'
-import { ApiResponse, STATUS_CODES } from '@/utils/http'
+import { createClient } from '@/lib/supabase/server'
+import { ApiResponse, STATUS_CODES } from '@/lib/http'
 import { newPasswordFormSchema } from '@/schemas/auth'
-import { absoluteUrl } from '@/utils'
+import { absoluteUrl } from '@/lib/utils'
 
 export async function POST(req: NextRequest) {
   const body = await req.json()
