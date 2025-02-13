@@ -20,9 +20,11 @@ const LoginWithGoogle = React.forwardRef<HTMLButtonElement, React.ComponentProps
         provider: 'google',
         options: {
           // Application code configuration
-          // 1. Consent Screen configuration:
+          // 1. (Supabase) URL Configuration
+          //   - Site URL: https://example.com
+          // 2. (Google) Consent Screen configuration:
           //   - Authorized domains: <PROJECT_ID>.supabase.co
-          // 2. API Credentials:
+          // 3. (Google) API Credentials:
           //   - Authorized JavaScript origins: http://localhost:3000
           //   - Authorized redirect URLs: https://<your-project-ref>.supabase.co/auth/v1/callback
           redirectTo: absoluteUrl('/api/auth/callback?next=/dashboard'),
