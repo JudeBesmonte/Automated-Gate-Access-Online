@@ -12,6 +12,11 @@
   - [Zustand](#zustand)
   - [React Query](#react-query)
   - [Jose (JsonWebToken)](#jose-jsonwebtoken)
+  - [Nodemailer](#nodemailer)
+  - [Browserslist](#browserslist)
+  - [cookies-next](#cookies-next)
+  - [Day.js](#dayjs)
+  - [qs](#qs)
   - [ESLint](#eslint)
   - [Prettier](#prettier)
   - [Troubleshooting](#troubleshooting)
@@ -187,6 +192,58 @@ JWA, JWS, JWE, JWT, JWK, JWKS for Node.js, Browser, Cloudflare Workers, Deno, Bu
 
 ```shell
 npm install jose
+```
+
+## Nodemailer
+
+Send e-mails with Node.JS.
+
+```shell
+npm install nodemailer
+npm install --save-dev @types/nodemailer
+```
+
+## Browserslist
+
+Share target browsers between different front-end tools, like Autoprefixer, Stylelint and babel-preset-env.
+
+```shell
+npm install browserslist
+```
+
+Edit `package.json`:
+
+```json
+{
+  "browserslist": [
+    "defaults and fully supports es6-module",
+    "maintained node versions"
+  ],
+}
+```
+
+## cookies-next
+
+Getting, setting and removing cookies on both client and server with next.js
+
+```shell
+npm i cookies-next@4.3.0
+```
+
+## Day.js
+
+Day.js 2kB immutable date-time library alternative to Moment.js with the same modern API.
+
+```shell
+npm install dayjs
+```
+
+## qs
+
+A querystring parser with nesting support
+
+```shell
+npm install qs @types/qs
 ```
 
 ## ESLint
