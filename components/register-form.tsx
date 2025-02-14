@@ -59,7 +59,7 @@ export function RegisterForm() {
       router.replace('/dashboard')
     } catch (e: unknown) {
       const message = (e as Error)?.message
-      if (message.includes('User already registered')) setError('root', { message })
+      if (message.includes('User already registered')) setError('email', { message })
       else toast.error(message)
     } finally {
       setIsSubmitting(false)
