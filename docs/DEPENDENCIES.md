@@ -11,6 +11,7 @@
   - [prisma](#prisma)
   - [Zustand](#zustand)
   - [React Query](#react-query)
+  - [Jose (JsonWebToken)](#jose-jsonwebtoken)
   - [ESLint](#eslint)
   - [Prettier](#prettier)
   - [Troubleshooting](#troubleshooting)
@@ -169,7 +170,7 @@ npm install @prisma/client
 Bear necessities for state management in React
 
 ```shell
-npm i zustand
+npm install zustand
 ```
 
 ## React Query
@@ -177,7 +178,15 @@ npm i zustand
 Powerful asynchronous state management, server-state utilities and data fetching for the web. TS/JS, React Query, Solid Query, Svelte Query and Vue Query.
 
 ```shell
-npm i @tanstack/react-query
+npm install @tanstack/react-query
+```
+
+## Jose (JsonWebToken)
+
+JWA, JWS, JWE, JWT, JWK, JWKS for Node.js, Browser, Cloudflare Workers, Deno, Bun, and other Web-interoperable runtimes.
+
+```shell
+npm install jose
 ```
 
 ## ESLint

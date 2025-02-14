@@ -15,6 +15,7 @@ This is a dashboard starter template for the [NextJS](https://nextjs.org) 14 bas
 - Prisma
 - Zustand
 - React Query
+- Jose (JsonWebToken)
 
 ## Folder and file Structure
 

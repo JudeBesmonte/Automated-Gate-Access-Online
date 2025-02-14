@@ -2,18 +2,19 @@
 
 import * as React from 'react'
 
-import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import { forgotPasswordFormSchema } from '@/schemas/auth'
+import { useCSRFToken } from '@/hooks/use-csrf-token'
 
 import { toast } from 'sonner'
 import { Button } from '@/components/ui/button'
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 
-import type { ForgotPasswordAPI } from '@/types/api'
 import { absoluteUrl } from '@/lib/utils'
+import type { ForgotPasswordAPI } from '@/types/api'
 
 type ForgotPasswordFormValues = z.infer<typeof forgotPasswordFormSchema>
 
@@ -34,6 +35,7 @@ export function ForgotPasswordForm() {
     formState: { errors },
   } = form
   const [isSubmitting, setIsSubmitting] = React.useState<boolean>(false)
+  const csrfToken = useCSRFToken()
 
   async function onSubmit(values: ForgotPasswordFormValues) {
     try {
@@ -41,7 +43,10 @@ export function ForgotPasswordForm() {
 
       const res = await fetch(absoluteUrl('/api/auth/forgot-password'), {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRF-Token': csrfToken,
+        },
         body: JSON.stringify(values),
       })
       const result: ForgotPasswordAPI = await res.json()

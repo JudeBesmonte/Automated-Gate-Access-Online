@@ -3,18 +3,19 @@
 import * as React from 'react'
 import { useRouter } from 'next/navigation'
 
-import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import { registerFormSchema } from '@/schemas/auth'
+import { useCSRFToken } from '@/hooks/use-csrf-token'
 
 import { toast } from 'sonner'
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
+
 import { absoluteUrl } from '@/lib/utils'
-import { type RegisterAPI } from '@/types/api'
-import { createClient } from '@/lib/supabase/client'
+import type { RegisterAPI } from '@/types/api'
 
 type RegisterFormValues = z.infer<typeof registerFormSchema>
 
@@ -38,6 +39,7 @@ export function RegisterForm() {
     formState: { errors },
   } = form
   const [isSubmitting, setIsSubmitting] = React.useState<boolean>(false)
+  const csrfToken = useCSRFToken()
 
   async function onSubmit(values: RegisterFormValues) {
     try {
@@ -45,7 +47,10 @@ export function RegisterForm() {
 
       const res = await fetch(absoluteUrl('/api/auth/register'), {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRF-Token': csrfToken,
+        },
         body: JSON.stringify(values),
       })
       const result: RegisterAPI = await res.json()

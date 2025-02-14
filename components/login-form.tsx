@@ -4,17 +4,19 @@ import * as React from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 
-import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import { loginFormSchema } from '@/schemas/auth'
+import { useCSRFToken } from '@/hooks/use-csrf-token'
 
 import { toast } from 'sonner'
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
+
 import { absoluteUrl } from '@/lib/utils'
-import { type LoginAPI } from '@/types/api'
+import type { LoginAPI } from '@/types/api'
 
 type LoginFormValues = z.infer<typeof loginFormSchema>
 
@@ -37,6 +39,7 @@ export function LoginForm() {
     formState: { errors },
   } = form
   const [isSubmitting, setIsSubmitting] = React.useState<boolean>(false)
+  const csrfToken = useCSRFToken()
 
   async function onSubmit(values: LoginFormValues) {
     try {
@@ -44,7 +47,10 @@ export function LoginForm() {
 
       const res = await fetch(absoluteUrl('/api/auth/login'), {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRF-Token': csrfToken,
+        },
         body: JSON.stringify(values),
       })
       const result: LoginAPI = await res.json()
