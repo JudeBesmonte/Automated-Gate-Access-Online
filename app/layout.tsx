@@ -3,6 +3,7 @@ import './globals.css'
 
 import { TailwindIndicator } from '@/components/tailwind-indicator'
 import { Toaster } from '@/components/ui/sonner'
+import { VercelAnalytics } from '@/components/vercel-analytics'
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -20,6 +21,7 @@ export default function RootLayout({
         {children}
         <Toaster richColors closeButton />
         <TailwindIndicator />
+        <VercelAnalytics />
       </body>
     </html>
   )
