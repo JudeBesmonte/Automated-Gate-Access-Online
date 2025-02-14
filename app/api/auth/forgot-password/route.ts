@@ -13,11 +13,11 @@ export async function POST(req: NextRequest) {
   const form = forgotPasswordFormSchema.safeParse(body)
 
   if (!(await verifyCsrfToken(req))) {
-    return ApiResponse.json({ user: null }, { status: STATUS_CODES.UNAUTHORIZED, statusText: 'Invalid csrf token' })
+    return ApiResponse.json({ message: 'Invalid csrf token' }, { status: STATUS_CODES.UNAUTHORIZED })
   }
 
   if (!form.success) {
-    return ApiResponse.json(null, { status: STATUS_CODES.BAD_REQUEST })
+    return ApiResponse.json({}, { status: STATUS_CODES.BAD_REQUEST })
   }
 
   // Implicit flow
@@ -36,10 +36,10 @@ export async function POST(req: NextRequest) {
   // - <p><a href="{{ .SiteURL }}/api/auth/confirm?token_hash={{ .TokenHash }}&type=recovery&next=/auth/new-password">Reset Password</a></p>
 
   const supabase = await createClient()
-  const { error } = await supabase.auth.resetPasswordForEmail(form.data.email)
+  const { data, error } = await supabase.auth.resetPasswordForEmail(form.data.email)
 
   if (error) {
-    return ApiResponse.json({ user: null }, { status: error?.status, statusText: error?.message })
+    return ApiResponse.json({ message: error?.message }, { status: error?.status })
   }
 
   return ApiResponse.json({ message: 'An email has been sent to reset your password.' })

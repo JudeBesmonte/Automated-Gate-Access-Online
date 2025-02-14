@@ -13,7 +13,7 @@ export async function POST(req: NextRequest) {
   const form = newPasswordFormSchema.safeParse(body)
 
   if (!(await verifyCsrfToken(req))) {
-    return ApiResponse.json({ user: null }, { status: STATUS_CODES.UNAUTHORIZED, statusText: 'Invalid csrf token' })
+    return ApiResponse.json({ user: null, message: 'Invalid csrf token' }, { status: STATUS_CODES.UNAUTHORIZED })
   }
 
   if (!form.success) {
@@ -27,7 +27,7 @@ export async function POST(req: NextRequest) {
   } = await supabase.auth.updateUser({ password: form.data.newPassword })
 
   if (error || !user) {
-    return ApiResponse.json({ user: null }, { status: error?.status, statusText: error?.message })
+    return ApiResponse.json({ user: null, message: error?.message }, { status: error?.status })
   }
 
   return ApiResponse.json({ user, message: 'Your password has been changed.' })

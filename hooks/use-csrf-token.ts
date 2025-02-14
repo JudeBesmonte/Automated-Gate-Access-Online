@@ -14,12 +14,10 @@ export function useCSRFToken() {
           headers: { 'Content-Type': 'text/plain' },
         })
         const token = await res.text()
-
         if (!res.ok) throw new Error(res.statusText)
-
         setCsrfToken(token)
       } catch (e: unknown) {
-        console.error((e as Error)?.message)
+        // console.error((e as Error)?.message)
       }
     }
     fetchCsrfToken()

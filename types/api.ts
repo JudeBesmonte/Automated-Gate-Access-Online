@@ -10,7 +10,7 @@ export interface RegisterAPI extends API {
 }
 
 export interface ForgotPasswordAPI extends API {
-  data: null
+  data: {}
 }
 
 export interface NewPasswordAPI extends API {
