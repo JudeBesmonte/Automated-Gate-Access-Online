@@ -1,5 +1,5 @@
+import { type NextRequest } from 'next/server'
 import { SignJWT, decodeJwt, jwtVerify, type JWTPayload, type JWTVerifyOptions } from 'jose'
-import { NextRequest } from 'next/server'
 
 const secret = new TextEncoder().encode(process.env.JWT_SECRET!)
 
