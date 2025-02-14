@@ -1,5 +1,20 @@
 # DEPENDENCIES
 
+## Table of Contents
+
+- [DEPENDENCIES](#dependencies)
+  - [Table of Contents](#table-of-contents)
+  - [Next.js](#nextjs)
+  - [shadcn](#shadcn)
+  - [tailwindcss](#tailwindcss)
+  - [Supabase](#supabase)
+  - [prisma](#prisma)
+  - [Zustand](#zustand)
+  - [React Query](#react-query)
+  - [ESLint](#eslint)
+  - [Prettier](#prettier)
+  - [Troubleshooting](#troubleshooting)
+
 ## Next.js
 
 Automatic Installation
@@ -21,11 +36,52 @@ $ node -v > .nvmrc
 
 ## shadcn
 
-[Install and configure Next.js](https://ui.shadcn.com/docs/installation/next)
+Run the init command to create a new Next.js project or to setup an existing one:
 
 ```shell
 npx shadcn@latest init -d
 ```
+
+Use the add command to add components and dependencies to your project.
+
+```shell
+npx shadcn@latest add -a
+```
+
+This will add/install all shadcn components (overwrite if present).
+
+```shell
+npx shadcn@latest add -a -y -o
+```
+
+Add `tanstack/react-table` dependency:
+
+```shell
+npm install @tanstack/react-table
+```
+
+Add the Toaster component. Edit `app/layout.tsx`:
+
+```javascript
+import { Toaster } from '@/components/ui/sonner'
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="en">
+      <body>
+        {children}
+        <Toaster richColors closeButton />
+      </body>
+    </html>
+  );
+}
+```
+
+[Install and configure Next.js](https://ui.shadcn.com/docs/installation/next)
 
 ## tailwindcss
 
@@ -49,30 +105,32 @@ export default {
 
 ## Supabase
 
-Supabase Auth
+Install Supabase Auth & CLI
 
 ```shell
 npm install @supabase/supabase-js @supabase/ssr
+npm install supabase --save-dev
 ```
 
-Local Development & CLI
+Initialize configurations for Supabase local development.
 
 ```shell
-$ npm install supabase --save-dev
-$ npx supabase login
-
-$ npx supabase init
-$ npx supabase link --project-ref YOUR_PROJECT_ID
-
-$ vim package.json
-{
-  "scripts": {
-    "gen-types": "supabase gen types --lang=typescript --linked > types/supabase.ts"
-  }
-}
-
-$ npm run gen-types
+npx supabase init
 ```
+
+Connect the Supabase CLI to your Supabase account by logging in with your personal access token.
+
+```shell
+npx supabase login
+```
+
+Link your local development project to a hosted Supabase project.
+
+```shell
+npx supabase link --project-ref <project-id>
+```
+
+[Supabase CLI](https://supabase.com/docs/reference/cli/introduction)
 
 ## prisma
 
