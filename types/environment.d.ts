@@ -5,6 +5,7 @@ declare global {
     interface ProcessEnv {
       NEXT_PUBLIC_APP_URL: string
 
+      CRON_SECRET: string
       JWT_SECRET: string
 
       NEXT_PUBLIC_SUPABASE_URL: string
