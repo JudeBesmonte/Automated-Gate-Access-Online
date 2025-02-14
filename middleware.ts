@@ -1,14 +1,12 @@
 import { NextResponse, type NextRequest } from 'next/server'
 import { updateSession } from '@/lib/supabase/middleware'
 
-export async function middleware(req: NextRequest) {
-  let res = await updateSession(req)
+export async function middleware(request: NextRequest) {
+  let response = await updateSession(request)
 
-  res.headers.set('x-url', req.nextUrl.href)
-  res.headers.set('x-origin', req.nextUrl.origin)
-  res.headers.set('x-pathname', req.nextUrl.pathname)
+  // ...
 
-  return res
+  return response
 }
 
 export const config = {
