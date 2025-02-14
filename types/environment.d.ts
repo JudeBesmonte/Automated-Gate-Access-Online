@@ -11,6 +11,18 @@ declare global {
       DATABASE_URL: string
       DIRECT_URL: string
 
+      EMAIL_SERVER: string
+      EMAIL_SERVER_HOST: string
+      EMAIL_SERVER_PORT: string
+      EMAIL_SERVER_USER: string
+      EMAIL_SERVER_PASSWORD: string
+      EMAIL_FROM: string
+      EMAIL_NAME: string
+      EMAIL_BREVO_USER: string
+      EMAIL_BREVO_PASS: string
+      EMAIL_GMAIL_USER: string
+      EMAIL_GMAIL_PASS: string
+
       AUTH_GITHUB_ID: string
       AUTH_GITHUB_SECRET: string
       AUTH_GOOGLE_ID: string

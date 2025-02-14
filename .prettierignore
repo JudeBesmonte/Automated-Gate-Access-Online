@@ -4,3 +4,4 @@
 /out/
 /components/ui/
 /components/custom-ui/
+/types/supabase.ts

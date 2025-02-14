@@ -34,7 +34,15 @@ module.exports = {
   },
   // Ignore Files in v9 (Deprecated)
   // https://eslint.org/docs/latest/use/configure/ignore-deprecated
-  ignorePatterns: ['/build/', '/dist/', '/out/', '/components/ui/', '/components/custom-ui/'],
+  ignorePatterns: [
+    '/build/',
+    '/dist/',
+    '/out/',
+    '/supabase/',
+    '/types/supabase.ts',
+    '/components/ui/',
+    '/components/custom-ui/',
+  ],
   rules: {
     // ... is defined but never used.
     'no-unused-vars': 'warn',
