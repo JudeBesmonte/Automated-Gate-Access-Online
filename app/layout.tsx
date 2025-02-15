@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import './globals.css'
 
+import { CookieConsent } from '@/components/cookie-consent'
 import { TailwindIndicator } from '@/components/tailwind-indicator'
 import { Toaster } from '@/components/ui/sonner'
 import { VercelAnalytics } from '@/components/vercel-analytics'
@@ -19,6 +20,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         {children}
+        <CookieConsent />
         <Toaster richColors closeButton />
         <TailwindIndicator />
         <VercelAnalytics />
