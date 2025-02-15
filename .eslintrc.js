@@ -42,6 +42,7 @@ module.exports = {
     '/types/supabase.ts',
     '/components/ui/',
     '/components/custom-ui/',
+    '/*.config.*',
   ],
   rules: {
     // ... is defined but never used.
