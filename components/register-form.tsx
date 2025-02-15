@@ -7,7 +7,7 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import { registerFormSchema } from '@/schemas/auth'
-import { useCSRFToken } from '@/hooks/use-csrf-token'
+import { useCsrfToken } from '@/hooks/use-csrf-token'
 
 import { toast } from 'sonner'
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
@@ -39,7 +39,7 @@ export function RegisterForm() {
     formState: { errors },
   } = form
   const [isSubmitting, setIsSubmitting] = React.useState<boolean>(false)
-  const csrfToken = useCSRFToken()
+  const csrfToken = useCsrfToken()
 
   async function onSubmit(values: RegisterFormValues) {
     try {

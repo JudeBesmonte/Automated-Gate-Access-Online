@@ -3,7 +3,7 @@
 import * as React from 'react'
 import { absoluteUrl } from '@/lib/utils'
 
-export function useCSRFToken() {
+export function useCsrfToken() {
   const [csrfToken, setCsrfToken] = React.useState<string>('missing')
 
   React.useEffect(() => {
