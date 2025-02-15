@@ -49,6 +49,7 @@ export function LoginForm() {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'X-Requested-With': 'XMLHttpRequest',
           'X-CSRF-Token': csrfToken,
         },
         body: JSON.stringify(values),

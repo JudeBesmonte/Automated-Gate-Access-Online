@@ -11,13 +11,16 @@ export function useCSRFToken() {
       try {
         const res = await fetch(absoluteUrl('/api/auth/csrf-token'), {
           method: 'GET',
-          headers: { 'Content-Type': 'text/plain' },
+          headers: {
+            'Content-Type': 'text/plain',
+            'X-Requested-With': 'XMLHttpRequest',
+          },
         })
-        const token = await res.text()
-        if (!res.ok) throw new Error(res.statusText)
-        setCsrfToken(token)
+        const text = await res.text()
+        if (!res.ok) throw new Error(text)
+        setCsrfToken(text)
       } catch (e: unknown) {
-        // console.error((e as Error)?.message)
+        console.error((e as Error)?.message)
       }
     }
     fetchCsrfToken()

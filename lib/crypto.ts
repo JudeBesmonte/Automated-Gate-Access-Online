@@ -14,4 +14,12 @@ export function verifyCsrfToken(req: NextRequest) {
   const x = req.headers.get('X-CSRF-Token')
   return !!s && !!x && s === x
 }
+
+export function verifyAjax(req: NextRequest) {
+  const x = req.headers.get('X-Requested-With')
+  return !!x && x === 'XMLHttpRequest'
+}
+
+export function verifyCsrfAndAjax(req: NextRequest) {
+  return verifyAjax(req) ? verifyCsrfToken(req) : false
 }

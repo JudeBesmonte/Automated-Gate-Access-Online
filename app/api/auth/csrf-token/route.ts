@@ -1,8 +1,13 @@
 import { NextResponse, type NextRequest } from 'next/server'
-import { generateCsrfToken } from '@/lib/crypto'
+import { STATUS_CODES } from '@/lib/http'
+import { generateCsrfToken, verifyAjax } from '@/lib/crypto'
 
 export async function GET(req: NextRequest) {
   const token = generateCsrfToken()
+
+  if (!verifyAjax(req)) {
+    return new NextResponse('Invalid or missing X-Requested-With header', { status: STATUS_CODES.UNAUTHORIZED })
+  }
 
   // Set CSRF token as an HTTP-only cookie
   const response = new NextResponse(token)

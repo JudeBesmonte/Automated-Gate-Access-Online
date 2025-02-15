@@ -4,7 +4,7 @@ import { createClient } from '@/lib/supabase/server'
 import { z } from 'zod'
 import { registerFormSchema } from '@/schemas/auth'
 import { ApiResponse, STATUS_CODES } from '@/lib/http'
-import { verifyCsrfToken } from '@/lib/crypto'
+import { verifyCsrfAndAjax } from '@/lib/crypto'
 
 type RegisterFormValues = z.infer<typeof registerFormSchema>
 
@@ -12,7 +12,7 @@ export async function POST(req: NextRequest) {
   const body = await req.json()
   const form = registerFormSchema.safeParse(body)
 
-  if (!verifyCsrfToken(req)) {
+  if (!verifyCsrfAndAjax(req)) {
     return ApiResponse.json({ user: null, message: 'Invalid csrf token' }, { status: STATUS_CODES.UNAUTHORIZED })
   }
 
