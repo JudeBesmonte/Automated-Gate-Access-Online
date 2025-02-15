@@ -5,8 +5,8 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
-export async function sleep(ms: number): Promise<void> {
-  return new Promise((resolve) => setTimeout(resolve, ms))
+export function wait(milliseconds: number) {
+  return new Promise((resolve) => setTimeout(resolve, milliseconds))
 }
 
 export function absoluteUrl(url: string | URL, base?: string | URL) {
