@@ -5,8 +5,12 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
-export function wait(milliseconds: number) {
+export async function wait(milliseconds: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, milliseconds))
+}
+
+export async function fetcher<JSON = any>(input: RequestInfo | URL, init?: RequestInit) {
+  return fetch(absoluteUrl(input.toString()), init).then((res) => res.json() as Promise<JSON>)
 }
 
 export function absoluteUrl(url: string | URL, base?: string | URL) {
