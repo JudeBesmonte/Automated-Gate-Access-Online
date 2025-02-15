@@ -6,7 +6,7 @@
   - [Table of Contents](#table-of-contents)
   - [Next.js](#nextjs)
   - [shadcn](#shadcn)
-  - [tailwindcss](#tailwindcss)
+  - [Tailwindcss](#tailwindcss)
   - [Supabase](#supabase)
   - [prisma](#prisma)
   - [Zustand](#zustand)
@@ -89,20 +89,21 @@ export default function RootLayout({
 
 [Install and configure Next.js](https://ui.shadcn.com/docs/installation/next)
 
-## tailwindcss
+## Tailwindcss
 
 Install Tailwind CSS
 
 ```shell
-npm install tailwindcss @tailwindcss/postcss postcss
+npm install -D tailwindcss@3 postcss autoprefixer
 ```
 
-Add Tailwind to your PostCSS configuration
+Add Tailwind to your PostCSS configuration. `postcss.config.js`:
 
 ```javascript
-export default {
+module.exports = {
   plugins: {
-    "@tailwindcss/postcss": {},
+    tailwindcss: {},
+    autoprefixer: {},
   }
 }
 ```
