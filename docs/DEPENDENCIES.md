@@ -11,12 +11,12 @@
   - [prisma](#prisma)
   - [Zustand](#zustand)
   - [React Query](#react-query)
-  - [Jose (JsonWebToken)](#jose-jsonwebtoken)
   - [Nodemailer](#nodemailer)
   - [Browserslist](#browserslist)
-  - [cookies-next](#cookies-next)
+  - [Jose (JsonWebToken)](#jose-jsonwebtoken)
   - [Day.js](#dayjs)
   - [qs](#qs)
+  - [cookies-next](#cookies-next)
   - [ESLint](#eslint)
   - [Prettier](#prettier)
   - [Troubleshooting](#troubleshooting)
@@ -187,14 +187,6 @@ Powerful asynchronous state management, server-state utilities and data fetching
 npm install @tanstack/react-query
 ```
 
-## Jose (JsonWebToken)
-
-JWA, JWS, JWE, JWT, JWK, JWKS for Node.js, Browser, Cloudflare Workers, Deno, Bun, and other Web-interoperable runtimes.
-
-```shell
-npm install jose
-```
-
 ## Nodemailer
 
 Send e-mails with Node.JS.
@@ -223,12 +215,12 @@ Edit `package.json`:
 }
 ```
 
-## cookies-next
+## Jose (JsonWebToken)
 
-Getting, setting and removing cookies on both client and server with next.js
+JWA, JWS, JWE, JWT, JWK, JWKS for Node.js, Browser, Cloudflare Workers, Deno, Bun, and other Web-interoperable runtimes.
 
 ```shell
-npm i cookies-next@4.3.0
+npm install jose
 ```
 
 ## Day.js
@@ -245,6 +237,14 @@ A querystring parser with nesting support
 
 ```shell
 npm install qs @types/qs
+```
+
+## cookies-next
+
+Getting, setting and removing cookies on both client and server with next.js
+
+```shell
+npm i cookies-next@4
 ```
 
 ## ESLint
