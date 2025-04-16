@@ -20,7 +20,10 @@ import { SidebarOptInForm } from '@/components/sidebar-opt-in-form'
 
 // This is sample data.
 const data = {
-  navMain: [{ title: 'Dashboard', url: '/dashboard', icon: SquareTerminal, open: true, items: [] }],
+  navMain: [
+    { title: 'Dashboard', url: '/dashboard', icon: SquareTerminal, open: true, items: [] },
+    { title: 'License Plate', url: '/license-plate', icon: SquareTerminal, open: false, items: [] }
+  ],
   navSecondary: [{ title: 'FAQ', url: '#', icon: MessageCircleQuestion }],
 }
 
