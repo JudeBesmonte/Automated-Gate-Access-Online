@@ -48,7 +48,7 @@ export default function RFIDTag() {
                 <AlertDescription>Tag successfully scanned and processed.</AlertDescription>
               </Alert>
             ) : (
-              <Alert variant="default">
+              <Alert defaultValue="outline">
                 <AlertCircle className="h-4 w-4" />
                 <AlertTitle>No RFID Tag Detected</AlertTitle>
                 <AlertDescription>Waiting for RFID tag to be scanned.</AlertDescription>

@@ -1,10 +1,48 @@
-import RFIDTag from "@/features/rfid-tag"
+import { redirect } from 'next/navigation';
+import { createClient } from '@/lib/supabase/server';
 
-export default function Home() {
+import { Breadcrumb, BreadcrumbItem, BreadcrumbList, BreadcrumbPage } from '@/components/ui/breadcrumb';
+import { Separator } from '@/components/ui/separator';
+import { SidebarInset, SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar';
+import { AppSidebar } from '@/components/app-sidebar';
+import { NavUser } from '@/components/nav-user';
+import { NavNotify } from '@/components/nav-notify';
+import RFIDTag from '@/features/rfid-tag';
+
+export default async function RFIDTagPage() {
+  const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  if (!user) redirect('/auth/login');
+
   return (
-    <main className="container mx-auto py-8 px-4">
-      <h1 className="text-3xl font-bold mb-8">RFID Detection System</h1>
-      <RFIDTag />
-    </main>
-  )
+    <SidebarProvider>
+      <AppSidebar />
+      <SidebarInset>
+        <header className="flex h-16 shrink-0 items-center gap-2 border-b px-8 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-16">
+          <div className="flex items-center gap-2">
+            <SidebarTrigger className="-ml-1" />
+            <Separator orientation="vertical" className="mr-2 h-4" />
+            <Breadcrumb>
+              <BreadcrumbList>
+                <BreadcrumbItem>
+                  <BreadcrumbPage className="line-clamp-1">RFID Tag</BreadcrumbPage>
+                </BreadcrumbItem>
+              </BreadcrumbList>
+            </Breadcrumb>
+          </div>
+          <div className="ml-auto flex items-center gap-2">
+            <NavNotify />
+            <NavUser />
+          </div>
+        </header>
+        <main className="flex flex-1 flex-col gap-8 p-8">
+          {/* Page specific content */} 
+          <RFIDTag />
+        </main>
+      </SidebarInset>
+    </SidebarProvider>
+  );
 }
